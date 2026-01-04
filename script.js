@@ -64,9 +64,13 @@ templateCards.forEach(card => {
             }, 400);
         }
         
-        // Add haptic feedback if available
-        if (navigator.vibrate) {
-            navigator.vibrate(15);
+        // Add haptic feedback if available (wrapped in try-catch to avoid errors)
+        try {
+            if (navigator.vibrate) {
+                navigator.vibrate(15);
+            }
+        } catch (e) {
+            // Vibration not supported or blocked, silently ignore
         }
     });
 });
@@ -160,53 +164,70 @@ function exportCard(format) {
     
     // Get the business card element
     const card = document.getElementById('businessCard');
+    const cardWrapper = card.parentElement;
     
-    // Store original transform and margins (mobile cards have these)
-    const originalTransform = card.style.transform;
-    const originalTransformOrigin = card.style.transformOrigin;
-    const originalMarginTop = card.style.marginTop;
-    const originalMarginBottom = card.style.marginBottom;
-    const originalMarginLeft = card.style.marginLeft;
-    const originalMarginRight = card.style.marginRight;
+    // Clone the card for export to avoid affecting the live preview
+    const cardClone = card.cloneNode(true);
+    cardClone.style.position = 'absolute';
+    cardClone.style.left = '-9999px';
+    cardClone.style.top = '0';
+    cardClone.style.width = '500px';
+    cardClone.style.height = '300px';
+    cardClone.style.transform = 'none';
+    cardClone.style.margin = '0';
+    cardClone.style.boxShadow = 'none';
+    document.body.appendChild(cardClone);
     
-    // Reset transform and margins for accurate capture
-    card.style.transform = 'none';
-    card.style.transformOrigin = 'top left';
-    card.style.marginTop = '0';
-    card.style.marginBottom = '0';
-    card.style.marginLeft = '0';
-    card.style.marginRight = '0';
+    // Remove problematic gradients from clone and replace with solid colors
+    const elementsWithGradients = cardClone.querySelectorAll('*');
+    const gradientFixes = [];
+    
+    elementsWithGradients.forEach((el) => {
+        const computedStyle = window.getComputedStyle(el);
+        const bgImage = computedStyle.backgroundImage;
+        const bgColor = computedStyle.backgroundColor;
+        
+        // Replace gradients with solid background colors to avoid html2canvas gradient bugs
+        if (bgImage && bgImage !== 'none' && bgImage.includes('gradient')) {
+            // Store the background color as fallback
+            el.style.backgroundImage = 'none';
+            // If element has a background color, use it; otherwise use a default
+            if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
+                el.style.backgroundColor = bgColor;
+            }
+        }
+    });
     
     // Small delay to let the DOM update
     setTimeout(() => {
-        // Configure html2canvas options for full-size export
+        // Configure html2canvas options for clean export
         const options = {
-            backgroundColor: null, // Transparent to preserve card background
-            scale: 3, // High quality export
+            backgroundColor: '#ffffff',
+            scale: 2, // Good quality without being too large
             logging: false,
             useCORS: true,
             allowTaint: true,
             scrollX: 0,
             scrollY: 0,
-            width: 500, // Original card width
-            height: 300, // Original card height
+            x: 0,
+            y: 0,
+            width: 500,
+            height: 300,
             windowWidth: 500,
-            windowHeight: 300
+            windowHeight: 300,
+            imageTimeout: 0,
+            removeContainer: true,
+            foreignObjectRendering: false
         };
         
-        // Capture the card
-        html2canvas(card, options).then(canvas => {
-            // Restore original transform and margins
-            card.style.transform = originalTransform;
-            card.style.transformOrigin = originalTransformOrigin;
-            card.style.marginTop = originalMarginTop;
-            card.style.marginBottom = originalMarginBottom;
-            card.style.marginLeft = originalMarginLeft;
-            card.style.marginRight = originalMarginRight;
+        // Capture the cloned card
+        html2canvas(cardClone, options).then(canvas => {
+            // Remove the clone
+            document.body.removeChild(cardClone);
             
             // Create download link
             const link = document.createElement('a');
-            const fileName = `business-card-${inputName.value.replace(/\s+/g, '-').toLowerCase()}-${Date.now()}`;
+            const fileName = `business-card-${inputName.value.replace(/\s+/g, '-').toLowerCase() || 'card'}-${Date.now()}`;
             
             if (format === 'png') {
                 link.download = `${fileName}.png`;
@@ -226,20 +247,17 @@ function exportCard(format) {
             // Show success message
             showNotification(`Card exported successfully as ${format.toUpperCase()}!`);
         }).catch(error => {
-            // Restore original transform and margins on error
-            card.style.transform = originalTransform;
-            card.style.transformOrigin = originalTransformOrigin;
-            card.style.marginTop = originalMarginTop;
-            card.style.marginBottom = originalMarginBottom;
-            card.style.marginLeft = originalMarginLeft;
-            card.style.marginRight = originalMarginRight;
+            // Remove the clone on error
+            if (document.body.contains(cardClone)) {
+                document.body.removeChild(cardClone);
+            }
             
             console.error('Export failed:', error);
             button.innerHTML = originalText;
             button.disabled = false;
             showNotification('Export failed. Please try again.', 'error');
         });
-    }, 100);
+    }, 150);
 }
 
 // ===== NOTIFICATION SYSTEM =====
