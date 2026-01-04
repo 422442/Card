@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Business Card Generator</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="app-title">Business Card Generator</h1>
+            <p class="app-subtitle">Create professional business cards in minutes</p>
+        </header>
+
+        <!-- Mobile Tab Navigation -->
+        <div class="mobile-tabs">
+            <button class="mobile-tab active" data-tab="templates">
+                <i class="fas fa-th"></i>
+                <span>Templates</span>
+            </button>
+            <button class="mobile-tab" data-tab="edit">
+                <i class="fas fa-edit"></i>
+                <span>Edit</span>
+            </button>
+            <button class="mobile-tab" data-tab="preview">
+                <i class="fas fa-eye"></i>
+                <span>Preview</span>
+            </button>
+        </div>
+
+        <div class="main-content">
+            <!-- Template Selection Section -->
+            <section class="template-section" id="templatesTab">
+                <h2 class="section-title">Choose Your Template (30 Premium Designs)</h2>
+                <div class="template-grid" id="templateGrid">
+                    <div class="template-card active" data-template="modern">
+                        <div class="template-preview template-modern-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Left Border</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="corporate">
+                        <div class="template-preview template-corporate-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Split Screen</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="creative">
+                        <div class="template-preview template-creative-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Centered Classic</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="elegant">
+                        <div class="template-preview template-elegant-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Hexagon Elite</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="tech">
+                        <div class="template-preview template-tech-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Diagonal Split</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="luxury">
+                        <div class="template-preview template-luxury-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Corner Badge</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="green">
+                        <div class="template-preview template-green-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Side Panel</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="ocean">
+                        <div class="template-preview template-ocean-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Prism Shift</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="sunset">
+                        <div class="template-preview template-sunset-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Geometric Frame</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="purple">
+                        <div class="template-preview template-purple-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Ultra Minimal</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="pink">
+                        <div class="template-preview template-pink-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Bold Name</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="teal">
+                        <div class="template-preview template-teal-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Executive Border</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="red">
+                        <div class="template-preview template-red-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Creative Overlap</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="emerald">
+                        <div class="template-preview template-emerald-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Tech Grid</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="rosegold">
+                        <div class="template-preview template-rosegold-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Floating Elements</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="midnight">
+                        <div class="template-preview template-midnight-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Horizontal Bands</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="coral">
+                        <div class="template-preview template-coral-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Card in Card</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="forest">
+                        <div class="template-preview template-forest-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Vertical Split</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="burgundy">
+                        <div class="template-preview template-burgundy-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Aurora Glow</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="slate">
+                        <div class="template-preview template-slate-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Circuit Board</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="neon">
+                        <div class="template-preview template-neon-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Neon Glow</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="gradient">
+                        <div class="template-preview template-gradient-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Gradient Pro</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="diamond">
+                        <div class="template-preview template-diamond-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Diamond Edge</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="carbon">
+                        <div class="template-preview template-carbon-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Carbon Fiber</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="marble">
+                        <div class="template-preview template-marble-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Marble Luxury</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="cyberpunk">
+                        <div class="template-preview template-cyberpunk-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Cyberpunk</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="glass">
+                        <div class="template-preview template-glass-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Glassmorphism</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="vintage">
+                        <div class="template-preview template-vintage-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Origami Fold</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="architect">
+                        <div class="template-preview template-architect-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Architect Grid</p>
+                    </div>
+                    
+                    <div class="template-card" data-template="quantum">
+                        <div class="template-preview template-quantum-preview">
+                            <div class="preview-name">John Doe</div>
+                            <div class="preview-title">Product Manager</div>
+                        </div>
+                        <p class="template-name">Quantum Wave</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="content-grid">
+                <!-- Card Preview Section -->
+                <section class="preview-section" id="previewTab">
+                    <div class="preview-header">
+                        <h2 class="section-title">Preview</h2>
+                        <div class="export-buttons">
+                            <button class="btn-export" id="exportPNG">
+                                <i class="fas fa-download"></i> PNG
+                            </button>
+                            <button class="btn-export" id="exportJPG">
+                                <i class="fas fa-download"></i> JPG
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-preview-wrapper">
+                        <div class="business-card template-modern" id="businessCard">
+                            <!-- Template 1: Modern Minimalist -->
+                            <div class="card-content template-modern-content">
+                                <div class="card-name" id="displayName">John Doe</div>
+                                <div class="card-title" id="displayTitle">Senior Product Manager</div>
+                                <div class="card-divider"></div>
+                                <div class="card-contacts">
+                                    <div class="contact-row">
+                                        <i class="fas fa-phone"></i>
+                                        <span id="displayPhone">+1 234 567 8900</span>
+                                    </div>
+                                    <div class="contact-row">
+                                        <i class="fas fa-envelope"></i>
+                                        <span id="displayEmail">john.doe@company.com</span>
+                                    </div>
+                                    <div class="contact-row">
+                                        <i class="fas fa-globe"></i>
+                                        <span id="displayWebsite">www.johndoe.com</span>
+                                    </div>
+                                </div>
+                                <div class="card-social" id="displaySocial">
+                                    <a href="#" class="social-link" id="linkedinLink" target="_blank">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="social-link" id="xLink" target="_blank">
+                                        <i class="fab fa-x-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-link" id="githubLink" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Form Section -->
+                <section class="form-section" id="editTab">
+                    <h2 class="section-title">Your Details</h2>
+                    <form id="cardForm" class="card-form">
+                        <div class="form-group">
+                            <label for="inputName">Full Name *</label>
+                            <input type="text" id="inputName" class="form-input" value="John Doe" placeholder="Enter your full name" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputTitle">Job Title *</label>
+                            <input type="text" id="inputTitle" class="form-input" value="Senior Product Manager" placeholder="Your job title" required />
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="inputPhone">Phone Number *</label>
+                                <input type="tel" id="inputPhone" class="form-input" value="+1 234 567 8900" placeholder="+1 234 567 8900" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail">Email Address *</label>
+                                <input type="email" id="inputEmail" class="form-input" value="john.doe@company.com" placeholder="email@company.com" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputWebsite">Website</label>
+                            <input type="url" id="inputWebsite" class="form-input" value="www.johndoe.com" placeholder="www.example.com" />
+                        </div>
+
+                        <div class="form-divider">Social Media (Optional)</div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="inputLinkedIn">
+                                    <i class="fab fa-linkedin"></i> LinkedIn
+                                </label>
+                                <input type="url" id="inputLinkedIn" class="form-input" placeholder="linkedin.com/in/username" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputX">
+                                    <i class="fab fa-x-twitter"></i> X (Twitter)
+                                </label>
+                                <input type="url" id="inputX" class="form-input" placeholder="x.com/username" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputGithub">
+                                <i class="fab fa-github"></i> GitHub
+                            </label>
+                            <input type="url" id="inputGithub" class="form-input" placeholder="github.com/username" />
+                        </div>
+
+                        <p class="form-note">* Required fields - Live preview updates automatically</p>
+                    </form>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2026 Business Card Generator. Made with minimalism in mind.</p>
+        </footer>
+    </div>
+
+    <!-- HTML2Canvas for Export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
